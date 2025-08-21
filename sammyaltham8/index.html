@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Sammy Altham</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Pick your poison. Full content inside. Choose OnlyFans or Fansly — links auto-carry your tracking tags." />
+  <meta property="og:title" content="Sammy Altham" />
+  <meta property="og:description" content="Pick your poison. Full content inside." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="hero.jpg" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <meta name="robots" content="index,follow" />
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --card: #13131a;
+      --text: #e7e7ee;
+      --muted: #a3a3b2;
+      --btn: #ffffff;
+      --btn-text: #0b0b0f;
+      --btn-hover: #d7d7df;
+      --focus: #7aa2ff;
+      --radius: 18px;
+      --maxw: 920px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans";
+      background: radial-gradient(1200px 800px at 70% -20%, #1b1b27 0%, var(--bg) 45%) fixed, var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+    .card {
+      width: 100%;
+      max-width: var(--maxw);
+      background: linear-gradient(180deg, #171722 0%, var(--card) 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    }
+    .hero { width: 100%; display: block; }
+    .content { padding: clamp(18px, 3vw, 28px); }
+    h1 { margin: 0 0 6px 0; font-size: clamp(28px, 4vw, 40px); }
+    p.sub { margin: 0 0 18px 0; color: var(--muted); font-size: clamp(14px, 2vw, 16px); }
+    .buttons { display: grid; gap: 12px; margin-top: 10px; }
+    @media (min-width: 560px) { .buttons { grid-template-columns: 1fr 1fr; } }
+    .btn {
+      border: none; border-radius: 12px; padding: 14px 18px; font-size: 16px; font-weight: 700;
+      background: var(--btn); color: var(--btn-text); text-align: center; text-decoration: none;
+      cursor: pointer; box-shadow: 0 6px 20px rgba(255,255,255,0.09);
+    }
+    .btn:hover { background: var(--btn-hover); }
+    .footer { margin-top: 18px; font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img src="hero.jpg" alt="Cover image" class="hero" />
+    <div class="content">
+      <h1>Where to next?</h1>
+      <p class="sub">Pick your poison. Full content inside.</p>
+      <div class="buttons">
+        <a id="btn-onlyfans" class="btn" href="#" role="button" data-base="">Go to OnlyFans</a>
+        <a id="btn-fansly" class="btn" href="#" role="button" data-base="">Go to Fansly</a>
+      </div>
+      <div class="footer">
+        Links auto-carry your tracking tags (src, utm_*, ad, profile) + unique tid per click.
+      </div>
+    </div>
+  </main>
+  <script>
+    var ONLYFANS = "";
+    var FANSLY   = "";
+    var passKeys = new Set(['src','utm_source','utm_medium','utm_campaign','utm_term','utm_content','ad','profile']);
+    var incoming = new URL(window.location.href).searchParams;
+    function buildParams(extra){ var p=new URLSearchParams(); passKeys.forEach(k=>{if(incoming.has(k))p.set(k,incoming.get(k));}); if(extra)Object.keys(extra).forEach(k=>p.set(k,extra[k])); return p; }
+    function withParams(base,extra){ try{ if(!base)return '#'; var u=new URL(base); var q=new URLSearchParams(u.search); var add=buildParams(extra); add.forEach((v,k)=>q.set(k,v)); u.search=q.toString(); return u.toString(); }catch(e){ return base||'#'; } }
+    function tid(){ return Date.now()+'-'+Math.random().toString(36).slice(2,10); }
+    function wire(btn,base){ if(!btn)return; btn.addEventListener('click',ev=>{ var finalUrl=withParams(base,{tid:tid()}); if(!base){ev.preventDefault();return;} btn.setAttribute('href',finalUrl); },{capture:true}); btn.href=withParams(base,null); }
+    wire(document.getElementById('btn-onlyfans'),ONLYFANS);
+    wire(document.getElementById('btn-fansly'),FANSLY);
+  </script>
+</body>
+</html>
