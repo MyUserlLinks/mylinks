@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Akame Neri</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Pick your poison. Full content inside. Choose OnlyFans or Fansly." />
+  <meta property="og:title" content="Akame Neri" />
+  <meta property="og:description" content="Pick your poison. Full content inside." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="hero.jpg" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --card: #161622;
+      --text: #e7e7ee;
+      --muted: #a3a3b2;
+      --radius: 18px;
+      --maxw: 900px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans";
+      background: radial-gradient(1200px 800px at 70% -20%, #1b1b27 0%, var(--bg) 45%) fixed, var(--bg);
+      color: var(--text);
+      display:grid; place-items:center; padding:20px;
+    }
+    .card {
+      width:100%; max-width:var(--maxw);
+      background: linear-gradient(180deg,#1a1a27 0%, var(--card) 100%);
+      border:1px solid rgba(255,255,255,0.07);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,.45);
+    }
+    .hero-wrap { background:#0c0c12; }
+    .hero {
+      width:100%; height:auto; max-height:360px; object-fit:cover; display:block;
+    }
+    .content { padding: clamp(18px,3vw,28px); }
+    h1 { margin:0 0 10px; font-size:clamp(26px,4vw,38px); }
+    p.sub { margin:0 0 20px; color:var(--muted); font-size:clamp(14px,2vw,16px); }
+    .buttons { display:grid; gap:14px; }
+    @media(min-width:560px){ .buttons{ grid-template-columns:1fr 1fr; } }
+    .btn {
+      display:block; text-align:center; padding:14px 18px;
+      font-weight:800; border-radius:14px; color:#fff; text-decoration:none;
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      transition:transform .08s ease, filter .15s ease;
+    }
+    .btn:hover{ transform:translateY(-1px); filter:brightness(1.05); }
+    .btn:active{ transform:translateY(0); }
+    .btn-of { background: linear-gradient(135deg,#ff4fa3 0%,#ff7cc0 100%); }
+    .btn-fs { background: linear-gradient(135deg,#4ea1ff 0%,#6ab0ff 100%); }
+    .footer { margin-top:18px; font-size:12px; color:#a3a3b2; text-align:center; }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <div class="hero-wrap">
+      <img src="hero.jpg" alt="Cover image" class="hero" />
+    </div>
+    <div class="content">
+      <h1>Where to next?</h1>
+      <p class="sub">Pick your poison. Full content inside.</p>
+      <div class="buttons">
+        <!-- Edit your links here -->
+        <a class="btn btn-of" href="https://onlyfans.com/YOUR_PROFILE" target="_blank" rel="noopener">Go to OnlyFans</a>
+        <a class="btn btn-fs" href="https://fansly.com/YOUR_PROFILE" target="_blank" rel="noopener">Go to Fansly</a>
+      </div>
+      <div class="footer">virginlinks · © 2025</div>
+    </div>
+  </main>
+</body>
+</html>
